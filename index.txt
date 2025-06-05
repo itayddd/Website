@@ -9,16 +9,16 @@ Web developer
 Show Contacts
 
 Email
-richard@example.com
+az09.serdten@gmail.com
 
 Phone
-+1 (213) 352-2795
+
 
 Birthday
-June 23, 1982
+June 3
 
 Location
-Sacramento, California, USA
+
 
 # navbar
 
