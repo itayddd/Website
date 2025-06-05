@@ -1,105 +1,240 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nomki6 Portfolio</title>
-  <link rel="stylesheet" href="Portfolio.css" />
-</head>
-<body>
+vCard - Personal Portfolio
 
-  <!-- Dot Navigation -->
-  <div class="nav-dots">
-    <a href="#about" id="dot-about"></a>
-    <a href="#services" id="dot-services"></a>
-    <a href="#portfolio" id="dot-portfolio"></a>
-    <a href="#contact" id="dot-contact"></a>
-  </div>
+# sidebar
 
-  <!-- Scroll Down Arrow -->
-  <div class="scroll-indicator">
-    <span></span>
-  </div>
+alt = Richard hanrick
+Richard hanrick
+Web developer
 
-  <!-- Scrollable Sections -->
-  <div class="container">
-    <section class="card" id="about">
-      <img src="l5csf69wl5ye1.jpeg" alt="About image" class="card-image" />
-      <h2>About Me</h2>
-      <p>I’m a 3D modeler and texturing artist with over 3 years of experience. My expertise includes modeling props, complex rigging in Blender, texturing models, and optimizing assets. I’ve worked on projects ranging from small indie productions to large, complex ones, and I excel at team communication. I work quickly and deliver only high-quality products.</p>
-    </section>
+Show Contacts
 
-    <section class="card" id="services">
-      <img src="l5csf69wl5ye1.jpeg" alt="Services image" class="card-image" />
-      <h2>Services</h2>
-      <p>💵 Pricing starts at $10 for simple models, with rates based on project complexity.</p>
-      <p>🚫 I don’t accept bulk orders or percentage-based payments for long-term projects.</p>
-      <p>I offer free consultations with no obligations.</p>
-    </section>
+Email
+richard@example.com
 
-    <section class="card" id="portfolio">
-      <h2>Portfolio</h2>
-      <a href="https://www.artstation.com/nomki6" target="_blank">
-        <img src="l5csf69wl5ye1.jpeg" alt="Portfolio preview" class="card-image" />
-      </a>
-      <p>See more at <a href="https://www.artstation.com/nomki6" target="_blank">my ArtStation</a>.</p>
-    </section>
+Phone
++1 (213) 352-2795
 
-    <section class="card" id="contact">
-      <img src="l5csf69wl5ye1.jpeg" alt="Contact image" class="card-image" />
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:az09.serdten@gmail.com">az09.serdten@gmail.com</a></p>
-    </section>
-  </div>
+Birthday
+June 23, 1982
 
-  <script>
-    const sections = document.querySelectorAll('.card');
-    const dots = {
-      about: document.getElementById('dot-about'),
-      services: document.getElementById('dot-services'),
-      portfolio: document.getElementById('dot-portfolio'),
-      contact: document.getElementById('dot-contact')
-    };
+Location
+Sacramento, California, USA
 
-    // Animate fade-in
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-        }
-      });
-    }, { threshold: 0.1 });
+# navbar
 
-    sections.forEach(section => observer.observe(section));
+About
+Resume
+Portfolio
+Blog
+Contact
 
-    // Highlight nav dots
-    const highlightDot = (id) => {
-      Object.values(dots).forEach(dot => dot.classList.remove('active'));
-      if (dots[id]) dots[id].classList.add('active');
-    };
+# about
 
-    const scrollObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          highlightDot(entry.target.id);
-        }
-      });
-    }, { threshold: 0.6 });
+About me
 
-    sections.forEach(card => scrollObserver.observe(card));
+I'm Creative Director and UI/UX Designer from Sydney, Australia, working in web development and print media. I enjoy turning complex problems into simple, beautiful and intuitive designs.
 
-    // Smooth snap scroll override
-    let currentIndex = 0;
-    let isScrolling = false;
+My job is to build your website so that it is functional and user-friendly but at the same time attractive. Moreover, I add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring across your message and identity in the most creative way. I created web design for many famous brand companies.
 
-    document.querySelector('.container').addEventListener('wheel', (e) => {
-      if (isScrolling) return;
-      isScrolling = true;
 
-      if (e.deltaY > 0) {
-        currentIndex = Math.min(currentIndex + 1, sections.length - 1);
-      } else {
-        currentIndex = Math.max(currentIndex - 1, 0);
-      }
+## service
 
-      sections[currentIndex].scrollIntoView({ behavior: 'smoo
+What i'm doing
+
+alt = design icon
+Web design
+The most modern and high-quality design made at a professional level.
+
+alt = Web development icon
+Web development
+High-quality development of sites at the professional level.
+
+alt = mobile app icon
+Mobile apps
+Professional development of applications for iOS and Android.
+
+alt = camera icon
+Photography
+I make high-quality photos of any category at a professional level.
+
+
+## testimonials
+
+Testimonials
+
+alt = Daniel lewis
+Daniel lewis
+Richard was hired to create a corporate identity. We were very pleased with the work done. She has a lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+
+alt = Jessica miller
+Jessica miller
+Richard was hired to create a corporate identity. We were very pleased with the work done. She has a lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+
+alt = Emily evans
+Emily evans
+Richard was hired to create a corporate identity. We were very pleased with the work done. She has a lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+
+alt = Henry william
+Henry william
+Richard was hired to create a corporate identity. We were very pleased with the work done. She has a lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+
+
+## clients
+
+Clients
+
+alt = client logo
+
+
+
+# resume
+
+Resume
+
+Education
+
+University school of the arts
+2007 — 2008
+Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et quas molestias exceptur.
+
+New york academy of art
+2006 — 2007
+Ratione voluptatem sequi nesciunt, facere quisquams facere menda ossimus, omnis voluptas assumenda est omnis..
+
+High school of art and design
+2002 — 2004
+Duis aute irure dolor in reprehenderit in voluptate, quila voluptas mag odit aut fugit, sed consequuntur magni dolores eos.
+
+Experience
+
+Creative director
+2015 — Present
+Nemo enim ipsam voluptatem blanditiis praesentium voluptum delenit atque corrupti, quos dolores et qvuas molestias exceptur.
+
+Art director
+2013 — 2015
+Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et quas molestias exceptur.
+
+Web designer
+2010 — 2013
+Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et quas molestias exceptur.
+
+My skills
+
+Web design
+80%
+Graphic design
+70%
+Branding
+90%
+WordPress
+50%
+
+
+
+# portfolio
+
+Portfolio
+
+All
+Web design
+Applications
+Web development
+
+Select category
+All
+Web design
+Applications
+Web development
+
+alt = finance
+Finance
+Web development
+
+alt = orizon
+Orizon
+Web development
+
+alt = fundo
+Fundo
+Web design
+
+alt = brawlhalla
+Brawlhalla
+Applications
+
+alt = dsm.
+DSM.
+Web design
+
+alt = metaspark
+MetaSpark
+Web design
+
+alt = summary
+Summary
+Web development
+
+alt = task manager
+Task Manager
+Applications
+
+alt = arrival
+Arrival
+Web development
+
+
+
+# blog
+
+Blog
+
+alt = Design conferences in 2022
+Design
+Fab 23, 2022
+Design conferences in 2022
+Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.
+
+alt = Best fonts every designer
+Design
+Fab 23, 2022
+Best fonts every designer
+Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.
+
+alt = Design digest #80
+Design
+Fab 23, 2022
+Design digest #80
+Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam corporis suscipit.
+
+alt = UI interactions of the week
+Design
+Fab 23, 2022
+UI interactions of the week
+Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation ullamco laboris nisi.
+
+alt = The forgotten art of spacing
+Design
+Fab 23, 2022
+The Forgotten Art Of Spacing
+Maxime placeat, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+alt = Design digest #79
+Design
+Fab 23, 2022
+Design Digest #79
+Optio cumque nihil impedit uo minus quod maxime placeat, velit esse cillum.
+
+
+
+# contact
+
+Contact
+
+Contact Form
+
+Full name
+Email address
+Your Message
+
+Send Message
