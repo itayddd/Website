@@ -1,90 +1,128 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nomki6 Portfolio</title>
-  <link rel="stylesheet" href="Portfolio.css" />
-</head>
-<body>
-  <!-- Dot Navigation -->
-  <div class="nav-dots">
-    <a href="#about" id="dot-about"></a>
-    <a href="#services" id="dot-services"></a>
-    <a href="#portfolio" id="dot-portfolio"></a>
-    <a href="#contact" id="dot-contact"></a>
-  </div>
+/* Reset and base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  background: #121212;
+  font-family: Arial, sans-serif;
+  color: #e0e0e0;
+}
 
-  <!-- Scroll Down Arrow -->
-  <div class="scroll-indicator">
-    <span></span>
-  </div>
+/* Scrollable full-screen container */
+.container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  position: relative;
+}
 
-  <!-- Scrollable Sections -->
-  <div class="container">
-    <section class="card" id="about">
-      <img src="l5csf69wl5ye1.jpeg" alt="About image" class="card-image" />
-      <h2>About Me</h2>
-      <p>I’m a 3D modeler and texturing artist with over 3 years of experience. My expertise includes modeling props, complex rigging in Blender, texturing models, and optimizing assets. I’ve worked on projects ranging from small indie productions to large, complex ones, and I excel at team communication. I work quickly and deliver only high-quality products.</p>
-    </section>
+/* Section style */
+.card {
+  scroll-snap-align: start;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+  margin: 10px auto;
+  width: 90%;
+  max-width: 900px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
 
-    <section class="card" id="services">
-      <img src="l5csf69wl5ye1.jpeg" alt="Services image" class="card-image" />
-      <h2>Services</h2>
-      <p>💵 Pricing starts at $10 for simple models, with rates based on project complexity.</p>
-      <p>🚫 I don’t accept bulk orders or percentage-based payments for long-term projects.</p>
-      <p>I offer free consultations with no obligations.</p>
-    </section>
+  /* entrance animation */
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.card.in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
 
-    <section class="card" id="portfolio">
-      <h2>Portfolio</h2>
-      <a href="https://www.artstation.com/nomki6" target="_blank">
-        <img src="l5csf69wl5ye1.jpeg" alt="Portfolio preview" class="card-image" />
-      </a>
-      <p>See more at <a href="https://www.artstation.com/nomki6" target="_blank">my ArtStation</a>.</p>
-    </section>
+.card-image {
+  width: 100%;
+  max-height: 50vh;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
 
-    <section class="card" id="contact">
-      <img src="l5csf69wl5ye1.jpeg" alt="Contact image" class="card-image" />
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:az09.serdten@gmail.com">az09.serdten@gmail.com</a></p>
-    </section>
-  </div>
+/* Scroll indicator arrow */
+.scroll-indicator {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+}
+.scroll-indicator span {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-bottom: 2px solid #4cc9f0;
+  border-right: 2px solid #4cc9f0;
+  transform: rotate(45deg);
+  animation: bounce 1.5s infinite ease-in-out;
+}
+@keyframes bounce {
+  0%, 100% { transform: rotate(45deg) translateY(0); }
+  50% { transform: rotate(45deg) translateY(10px); }
+}
 
-  <!-- Script for animations & dot nav -->
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-        }
-      });
-    }, { threshold: 0.1 });
+/* Dot navigation */
+.nav-dots {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.nav-dots a {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #555;
+  display: block;
+  transition: background 0.3s ease;
+}
+.nav-dots a.active,
+.nav-dots a:hover {
+  background: #4cc9f0;
+}
 
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => observer.observe(card));
+/* Links */
+a {
+  color: #4cc9f0;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
 
-    const dots = {
-      about: document.getElementById('dot-about'),
-      services: document.getElementById('dot-services'),
-      portfolio: document.getElementById('dot-portfolio'),
-      contact: document.getElementById('dot-contact')
-    };
-
-    const highlightDot = (id) => {
-      Object.values(dots).forEach(dot => dot.classList.remove('active'));
-      if (dots[id]) dots[id].classList.add('active');
-    };
-
-    const scrollObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          highlightDot(entry.target.id);
-        }
-      });
-    }, { threshold: 0.6 });
-
-    cards.forEach(card => scrollObserver.observe(card));
-  </script>
-</body>
-</html>
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .card {
+    padding: 20px;
+  }
+  .card-image {
+    max-height: 40vh;
+  }
+  .nav-dots {
+    right: 10px;
+  }
+}
