@@ -1,58 +1,53 @@
-/* Overall page styles */
 body {
   margin: 0;
-  background-color: #121212; /* dark background */
-  color: #e0e0e0;            /* light gray text for contrast */
+  background: #121212;
+  color: #e0e0e0;
   font-family: Arial, sans-serif;
 }
 
-/* Centered container with max width for content */
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;  /* some side padding on mobile */
-}
-
-/* Card sections styling */
-.card {
-  background-color: #1e1e1e;   /* slightly lighter dark for card */
-  border-radius: 10px;         /* rounded corners */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);  /* subtle shadow for depth */
+  max-width: 1000px;
+  margin: auto;
   padding: 20px;
-  margin: 40px 0;             /* space between cards */
-  opacity: 0;                 /* start invisible (for animation) */
-  transform: translateY(20px);/* start slightly pushed down */
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  /* The transition will animate the opacity/position when class changes */
 }
 
-/* Heading styles inside cards */
-.card h2 {
-  color: #ffffff;
-  margin-top: 0;
+.card {
+  background: #1e1e1e;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  padding: 20px;
+  margin: 40px 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
 }
 
-/* Image inside card (placeholder styling) */
-.card img.card-image, .card img.portfolio-image {
-  max-width: 100%;
+.card.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-image {
+  width: 100%;
   border-radius: 8px;
-  display: block;
   margin-bottom: 15px;
 }
 
-/* The 'in-view' class is applied when card enters viewport */
-.card.in-view {
-  opacity: 1;             /* fade in */
-  transform: translateY(0); /* slide to original position */
+a {
+  color: #4cc9f0;
+  text-decoration: none;
 }
 
-/* Responsive: if needed, adjust for smaller screens */
+a:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 600px) {
   .card {
     padding: 15px;
   }
-  .card img.card-image, .card img.portfolio-image {
-    /* On small screens, images stack above text full-width */
-    margin-bottom: 10px;
+
+  .card-image {
+    max-width: 100%;
   }
 }
