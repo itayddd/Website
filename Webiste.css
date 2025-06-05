@@ -1,144 +1,58 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-html {
-  scroll-behavior: smooth;
-}
+/* Overall page styles */
 body {
-  background: #111;
-  color: #eee;
+  margin: 0;
+  background-color: #121212; /* dark background */
+  color: #e0e0e0;            /* light gray text for contrast */
   font-family: Arial, sans-serif;
-  overflow: hidden;
 }
 
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: flex-end;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  pointer-events: none;
-}
-.navbar ul {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-.navbar a {
-  color: #eee;
-  text-decoration: none;
-  font-weight: bold;
-  pointer-events: auto;
-  transition: color 0.3s ease;
-}
-.navbar a:hover {
-  color: #4CC9F0;
-}
-
-.snap-container {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-}
-.snap-child {
-  height: 100vh;
-  scroll-snap-align: start;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 4rem;
-}
-
-.section-content {
+/* Centered container with max width for content */
+.container {
   max-width: 1200px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  opacity: 1;
-  transform: translateY(0);
+  margin: 0 auto;
+  padding: 20px;  /* some side padding on mobile */
+}
+
+/* Card sections styling */
+.card {
+  background-color: #1e1e1e;   /* slightly lighter dark for card */
+  border-radius: 10px;         /* rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);  /* subtle shadow for depth */
+  padding: 20px;
+  margin: 40px 0;             /* space between cards */
+  opacity: 0;                 /* start invisible (for animation) */
+  transform: translateY(20px);/* start slightly pushed down */
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  /* The transition will animate the opacity/position when class changes */
 }
-.text-content, .image-content {
-  flex: 1;
+
+/* Heading styles inside cards */
+.card h2 {
+  color: #ffffff;
+  margin-top: 0;
 }
-.image-content {
-  text-align: center;
-}
-.image-content img {
+
+/* Image inside card (placeholder styling) */
+.card img.card-image, .card img.portfolio-image {
   max-width: 100%;
-  max-height: 80vh;
-  object-fit: contain;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+  display: block;
+  margin-bottom: 15px;
 }
 
-#services ul {
-  list-style: none;
-  padding: 1rem;
-}
-#services li::before {
-  content: "✦";
-  color: #4CC9F0;
-  margin-right: 0.5rem;
+/* The 'in-view' class is applied when card enters viewport */
+.card.in-view {
+  opacity: 1;             /* fade in */
+  transform: translateY(0); /* slide to original position */
 }
 
-a.button {
-  color: #4CC9F0;
-  border: 2px solid #4CC9F0;
-  border-radius: 4px;
-  padding: 8px 16px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s, transform 0.3s;
-}
-a.button:hover {
-  background: #4CC9F0;
-  color: #111;
-  transform: scale(1.05);
-}
-
-.portfolio-images {
-  margin-top: 1rem;
-  display: flex;
-  gap: 1rem;
-}
-.portfolio-images img {
-  width: 200px;
-  border: 2px solid #333;
-  border-radius: 4px;
-  transition: transform 0.3s, border-color 0.3s;
-}
-.portfolio-images img:hover {
-  transform: scale(1.05);
-  border-color: #4CC9F0;
-}
-
-#contact a {
-  color: #4CC9F0;
-}
-#contact a:hover {
-  text-decoration: underline;
-}
-
-@media (max-width: 768px) {
-  .section-content {
-    flex-direction: column;
-    text-align: center;
+/* Responsive: if needed, adjust for smaller screens */
+@media (max-width: 600px) {
+  .card {
+    padding: 15px;
   }
-  .image-content img {
-    max-height: 50vh;
-  }
-  .navbar {
-    justify-content: center;
-    background: #111;
+  .card img.card-image, .card img.portfolio-image {
+    /* On small screens, images stack above text full-width */
+    margin-bottom: 10px;
   }
 }
