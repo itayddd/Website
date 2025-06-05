@@ -1,69 +1,60 @@
-/* Base Styles and Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 html {
-  scroll-behavior: smooth;  /* Smooth scrolling for anchor navigation */
+  scroll-behavior: smooth;
 }
 body {
-  background: #111;         /* Dark background for a minimalist theme */
-  color: #eee;              /* Light text for contrast on dark bg */
+  background: #111;
+  color: #eee;
   font-family: Arial, sans-serif;
-  overflow: hidden;         /* Disable body scroll; use inner container scroll */
+  overflow: hidden;
 }
 
-/* Navigation Bar (fixed at top with transparent background) */
 .navbar {
   position: fixed;
   top: 0;
-  right: 0;
   left: 0;
+  right: 0;
   padding: 1rem 2rem;
   display: flex;
   justify-content: flex-end;
-  background: rgba(0, 0, 0, 0.5);  /* Semi-transparent backdrop */
+  background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
-  pointer-events: none;           /* Allow scroll events to pass through nav:contentReference[oaicite:8]{index=8} */
+  pointer-events: none;
 }
 .navbar ul {
   list-style: none;
   display: flex;
   gap: 1.5rem;
 }
-.navbar li {
-  /* No additional styles needed for list items */
-}
 .navbar a {
   color: #eee;
   text-decoration: none;
   font-weight: bold;
-  pointer-events: auto;          /* Links are clickable despite parent being non-interactive */
+  pointer-events: auto;
   transition: color 0.3s ease;
 }
 .navbar a:hover {
-  color: #4CC9F0;  /* Bright accent color on hover */
+  color: #4CC9F0;
 }
 
-/* Scroll-snap Container and Sections */
 .snap-container {
   height: 100vh;
   overflow-y: scroll;
-  scroll-snap-type: y mandatory;  /* Snap to each section when scrolling:contentReference[oaicite:9]{index=9} */
+  scroll-snap-type: y mandatory;
 }
 .snap-child {
   height: 100vh;
-  scroll-snap-align: start;      /* Each section starts at top of viewport */
+  scroll-snap-align: start;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 4rem;
-  position: relative;
-  /* Optional: add a subtle border or different bg for each section for separation */
 }
 
-/* Section Content Layout */
 .section-content {
   max-width: 1200px;
   width: 100%;
@@ -71,16 +62,12 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  /* Initial state for animated content (if using a trigger class or :target) */
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 .text-content, .image-content {
   flex: 1;
-}
-.text-content {
-  /* text-content will stack above image on small screens (see media query) */
 }
 .image-content {
   text-align: center;
@@ -91,71 +78,67 @@ body {
   object-fit: contain;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  /* We'll animate images similarly to text */
   transition: transform 0.6s ease-out, opacity 0.6s ease-out;
 }
 
-/* Fade/slide-in effect: when section is targeted via anchor (e.g., user clicks nav) */
-.snap-child:target .section-content {
-  opacity: 1;
-  transform: translateY(0);
-}
-/* (If using explicit classes for visibility, e.g., .is-visible on .section-content, 
-   those would be toggled to trigger the transition:contentReference[oaicite:10]{index=10}) */
-
-/* Services list style (custom bullet) */
 #services ul {
   list-style: none;
   padding: 1rem;
 }
 #services li::before {
-  content: "✦";        /* Custom diamond bullet for each service */
+  content: "✦";
   color: #4CC9F0;
   margin-right: 0.5rem;
 }
 
-/* Portfolio thumbnails hover effect */
+a.button {
+  color: #4CC9F0;
+  border: 2px solid #4CC9F0;
+  border-radius: 4px;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.3s;
+}
+a.button:hover {
+  background: #4CC9F0;
+  color: #111;
+  transform: scale(1.05);
+}
+
 .portfolio-images {
   margin-top: 1rem;
   display: flex;
-  flex-wrap: wrap;
   gap: 1rem;
 }
 .portfolio-images img {
   width: 200px;
   border: 2px solid #333;
   border-radius: 4px;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s, border-color 0.3s;
 }
 .portfolio-images img:hover {
   transform: scale(1.05);
   border-color: #4CC9F0;
 }
 
-/* Contact section link style (email link) */
 #contact a {
   color: #4CC9F0;
-  text-decoration: none;
 }
 #contact a:hover {
   text-decoration: underline;
 }
 
-/* Responsive Design: stack content vertically on smaller screens */
 @media (max-width: 768px) {
   .section-content {
     flex-direction: column;
     text-align: center;
-  }
-  .section-content .text-content, .section-content .image-content {
-    width: 100%;
   }
   .image-content img {
     max-height: 50vh;
   }
   .navbar {
     justify-content: center;
-    padding: 0.5rem 1rem;
-    background: #111;  /* Solid background for nav on mobile for readability */
+    background: #111;
   }
 }
