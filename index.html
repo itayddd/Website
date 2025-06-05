@@ -4,63 +4,66 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nomki6 Portfolio</title>
-  <!-- Correct link to your CSS file -->
-  <link rel="stylesheet" href="Webiste.css" />
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="Website.css" />
 </head>
 <body>
-  <nav class="navbar">
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
 
-  <div class="snap-container">
-    <section id="about" class="snap-child">
-      <div class="section-content">
-        <div class="text-content">
-          <h1>About Me</h1>
-          <p>I’m a 3D modeler and texturing artist with over 3 years of experience. My expertise includes modeling props, complex rigging in Blender, texturing models, and optimizing assets. I’ve worked on projects ranging from small indie productions to large, complex ones, and I excel at team communication. I work quickly and deliver only high-quality products.</p>
-        </div>
-        <div class="image-content">
-          <img src="l5csf69wl5ye1.jpeg" alt="Sample artwork" />
-        </div>
-      </div>
+  <div class="container">
+    <!-- About Section -->
+    <section id="about" class="card">
+      <img src="l5csf69wl5ye1.jpeg" alt="Nomki6 profile" class="card-image" />
+      <h2>About Me</h2>
+      <p>I’m a 3D modeler and texturing artist with over 3 years of experience. 
+         My expertise includes modeling props, complex rigging in Blender, 
+         texturing models, and optimizing assets. I’ve worked on projects ranging 
+         from small indie productions to large, complex ones, and I excel at team 
+         communication. I work quickly and deliver only high-quality products.</p>
     </section>
 
-    <section id="services" class="snap-child">
-      <div class="section-content">
-        <h1>Services</h1>
-        <ul>
-          <li>💵 Pricing starts at $10 for simple models, with rates based on project complexity.</li>
-          <li>🚫 I don’t accept bulk orders or percentage-based payments for long-term projects.</li>
-          <li>💬 Free consultations with no obligations.</li>
-        </ul>
-      </div>
+    <!-- Services Section -->
+    <section id="services" class="card">
+      <img src="l5csf69wl5ye1.jpeg" alt="Services placeholder" class="card-image" />
+      <h2>Services & Pricing</h2>
+      <p>💵 <strong>Pricing:</strong> starts at $10 for simple models, with rates based on project complexity.</p>
+      <p>🚫 <strong>Note:</strong> I don’t accept bulk orders or percentage-based payments for long-term projects.</p>
+      <p><em>I offer free consultations with no obligations.</em></p>
     </section>
 
-    <section id="portfolio" class="snap-child">
-      <div class="section-content">
-        <h1>Portfolio</h1>
-        <p>Explore my work on ArtStation:</p>
-        <p><a class="button" href="https://www.artstation.com/nomki6" target="_blank" rel="noopener">View ArtStation</a></p>
-        <div class="portfolio-images">
-          <a href="https://www.artstation.com/nomki6" target="_blank">
-            <img src="l5csf69wl5ye1.jpeg" alt="Art preview" />
-          </a>
-        </div>
-      </div>
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="card">
+      <h2>Portfolio</h2>
+      <p>Check out my work on 
+         <a href="https://www.artstation.com/nomki6" target="_blank">ArtStation</a>.</p>
+      <img src="l5csf69wl5ye1.jpeg" alt="Portfolio sample" class="portfolio-image" />
+      <!-- The image above is a placeholder for an actual portfolio piece -->
     </section>
 
-    <section id="contact" class="snap-child">
-      <div class="section-content">
-        <h1>Contact</h1>
-        <p>Email: <a href="mailto:az09.serdten@gmail.com">az09.serdten@gmail.com</a></p>
-        <p>Let’s bring your ideas to life!</p>
-      </div>
+    <!-- Contact Section -->
+    <section id="contact" class="card">
+      <img src="l5csf69wl5ye1.jpeg" alt="Contact placeholder" class="card-image" />
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:az09.serdten@gmail.com">az09.serdten@gmail.com</a></p>
     </section>
   </div>
+
+  <!-- Optional JavaScript for scroll reveal -->
+  <script>
+    // Observe each card and add 'in-view' class when visible
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        } else {
+          entry.target.classList.remove('in-view');
+        }
+      });
+    }, { threshold: 0.1 }); // 10% of card visible triggers it
+
+    document.querySelectorAll('.card').forEach(card => {
+      observer.observe(card);
+    });
+  </script>
+
 </body>
 </html>
