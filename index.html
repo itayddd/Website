@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="Portfolio.css" />
 </head>
 <body>
+
   <!-- Dot Navigation -->
   <div class="nav-dots">
     <a href="#about" id="dot-about"></a>
@@ -51,8 +52,16 @@
     </section>
   </div>
 
-  <!-- JS for animation + dot highlight -->
   <script>
+    const sections = document.querySelectorAll('.card');
+    const dots = {
+      about: document.getElementById('dot-about'),
+      services: document.getElementById('dot-services'),
+      portfolio: document.getElementById('dot-portfolio'),
+      contact: document.getElementById('dot-contact')
+    };
+
+    // Animate fade-in
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -61,16 +70,9 @@
       });
     }, { threshold: 0.1 });
 
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => observer.observe(card));
+    sections.forEach(section => observer.observe(section));
 
-    const dots = {
-      about: document.getElementById('dot-about'),
-      services: document.getElementById('dot-services'),
-      portfolio: document.getElementById('dot-portfolio'),
-      contact: document.getElementById('dot-contact')
-    };
-
+    // Highlight nav dots
     const highlightDot = (id) => {
       Object.values(dots).forEach(dot => dot.classList.remove('active'));
       if (dots[id]) dots[id].classList.add('active');
@@ -84,7 +86,20 @@
       });
     }, { threshold: 0.6 });
 
-    cards.forEach(card => scrollObserver.observe(card));
-  </script>
-</body>
-</html>
+    sections.forEach(card => scrollObserver.observe(card));
+
+    // Smooth snap scroll override
+    let currentIndex = 0;
+    let isScrolling = false;
+
+    document.querySelector('.container').addEventListener('wheel', (e) => {
+      if (isScrolling) return;
+      isScrolling = true;
+
+      if (e.deltaY > 0) {
+        currentIndex = Math.min(currentIndex + 1, sections.length - 1);
+      } else {
+        currentIndex = Math.max(currentIndex - 1, 0);
+      }
+
+      sections[currentIndex].scrollIntoView({ behavior: 'smoo
