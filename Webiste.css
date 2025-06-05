@@ -1,83 +1,161 @@
-body {
+/* Global Styles */
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #0f0f0f;
-  color: #f0f0f0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;  /* Smooth scrolling for anchor links */
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #121212;
+  color: #EEEEEE;
+  line-height: 1.6;
+  padding-top: 80px;  /* Space for fixed nav */
 }
 
-.container {
-  max-width: 1000px;
-  margin: auto;
-  padding: 2rem;
-}
-
-header {
+/* Navigation Bar */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #181818;
+  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 3rem;
+  z-index: 1000;
 }
-
-header h1 {
-  font-size: 2rem;
-  color: #0ff;
-}
-
-nav a {
-  color: #0ff;
-  margin-left: 1rem;
+nav .logo {
+  color: #9146FF;  /* Accent color for logo */
+  font-size: 1.5em;
+  font-weight: 700;
   text-decoration: none;
-  font-weight: bold;
 }
-
-nav a:hover {
-  text-shadow: 0 0 5px #0ff;
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
 }
-
-.hero {
-  text-align: center;
-  padding: 4rem 0;
+nav ul li {
+  /* list-style is none, so just spacing is needed */
 }
-
-.hero h2 {
-  font-size: 2.5rem;
-  color: #f0f0f0;
+nav ul li a {
+  color: #EEEEEE;
+  text-decoration: none;
+  font-weight: 400;
+  position: relative;
+  padding: 5px;
 }
-
-.hero p {
-  font-size: 1.2rem;
-  color: #aaa;
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: #9146FF;
+  transition: width 0.3s;
 }
-
-#portfolio h3,
-#about h3,
-#contact h3 {
-  margin-top: 4rem;
-  font-size: 1.8rem;
-  color: #0ff;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1rem;
-}
-
-.grid img {
+nav ul li a:hover::after {
   width: 100%;
-  border-radius: 8px;
-  transition: transform 0.3s ease, filter 0.3s ease;
+}
+nav ul li a:hover {
+  color: #9146FF;
 }
 
-.grid img:hover {
-  transform: scale(1.03);
-  filter: brightness(1.2);
+/* Section Styles */
+section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  scroll-margin-top: 80px;  /* offset for fixed nav when scrolling to section */
+}
+section h1, section h2 {
+  color: #FFFFFF;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+section h1 { font-size: 2em; }
+section h2 { font-size: 1.8em; }
+section p {
+  margin-bottom: 15px;
+  font-weight: 400;
+}
+.services-list {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+.services-list li {
+  margin-bottom: 10px;
 }
 
+/* Link and Button Styles */
+a {
+  color: #9146FF;
+  text-decoration: none;
+}
+a:hover {
+  color: #B277FF; /* Slightly lighter shade on hover (optional subtle effect) */
+}
+a.button {
+  color: #9146FF;
+  border: 2px solid #9146FF;
+  border-radius: 4px;
+  padding: 8px 16px;
+  display: inline-block;
+  font-weight: 700;
+  /* Transition for interactive hover effect */
+  transition: background 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+a.button:hover {
+  background: #9146FF;
+  color: #121212;
+  transform: scale(1.05);
+  box-shadow: 0 0 8px #9146FF, 0 0 16px #9146FF;
+}
+
+/* Contact email link style (underline on hover for clarity) */
+#contact a {
+  color: #EEEEEE;
+  text-decoration: underline;
+}
+#contact a:hover {
+  color: #9146FF;
+}
+
+/* Footer Styles */
 footer {
   text-align: center;
-  margin-top: 4rem;
-  color: #666;
-  font-size: 0.9rem;
+  padding: 20px;
+  color: #888888;
+  font-size: 0.9em;
+}
+
+/* Responsive Design: Mobile */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  nav ul li a {
+    padding: 10px;
+  }
+  section {
+    padding: 40px 20px;
+  }
+  section h1, section h2 {
+    text-align: center;
+  }
+  .services-list li {
+    padding-left: 0; /* no extra indent */
+  }
 }
