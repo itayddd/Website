@@ -1,145 +1,161 @@
+/* Base Styles and Reset */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth;  /* Smooth scrolling for anchor navigation */
 }
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #121212;
-  color: #EEEEEE;
-  line-height: 1.6;
-  padding-top: 80px;
+  background: #111;         /* Dark background for a minimalist theme */
+  color: #eee;              /* Light text for contrast on dark bg */
+  font-family: Arial, sans-serif;
+  overflow: hidden;         /* Disable body scroll; use inner container scroll */
 }
 
-nav {
+/* Navigation Bar (fixed at top with transparent background) */
+.navbar {
   position: fixed;
   top: 0;
+  right: 0;
   left: 0;
-  width: 100%;
-  background: #181818;
-  padding: 15px 20px;
+  padding: 1rem 2rem;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-end;
+  background: rgba(0, 0, 0, 0.5);  /* Semi-transparent backdrop */
   z-index: 1000;
+  pointer-events: none;           /* Allow scroll events to pass through nav:contentReference[oaicite:8]{index=8} */
 }
-nav .logo {
-  color: #9146FF;
-  font-size: 1.5em;
-  font-weight: 700;
-  text-decoration: none;
-}
-nav ul {
+.navbar ul {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 1.5rem;
 }
-nav ul li a {
-  color: #EEEEEE;
+.navbar li {
+  /* No additional styles needed for list items */
+}
+.navbar a {
+  color: #eee;
   text-decoration: none;
-  font-weight: 400;
+  font-weight: bold;
+  pointer-events: auto;          /* Links are clickable despite parent being non-interactive */
+  transition: color 0.3s ease;
+}
+.navbar a:hover {
+  color: #4CC9F0;  /* Bright accent color on hover */
+}
+
+/* Scroll-snap Container and Sections */
+.snap-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;  /* Snap to each section when scrolling:contentReference[oaicite:9]{index=9} */
+}
+.snap-child {
+  height: 100vh;
+  scroll-snap-align: start;      /* Each section starts at top of viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
   position: relative;
-  padding: 5px;
+  /* Optional: add a subtle border or different bg for each section for separation */
 }
-nav ul li a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0%;
-  height: 2px;
-  background: #9146FF;
-  transition: width 0.3s;
-}
-nav ul li a:hover::after {
+
+/* Section Content Layout */
+.section-content {
+  max-width: 1200px;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  /* Initial state for animated content (if using a trigger class or :target) */
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-nav ul li a:hover {
-  color: #9146FF;
+.text-content, .image-content {
+  flex: 1;
+}
+.text-content {
+  /* text-content will stack above image on small screens (see media query) */
+}
+.image-content {
+  text-align: center;
+}
+.image-content img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  /* We'll animate images similarly to text */
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
 }
 
-section {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 60px 20px;
-  scroll-margin-top: 80px;
+/* Fade/slide-in effect: when section is targeted via anchor (e.g., user clicks nav) */
+.snap-child:target .section-content {
+  opacity: 1;
+  transform: translateY(0);
 }
-section h1, section h2 {
-  color: #FFFFFF;
-  margin-bottom: 20px;
-  font-weight: 700;
-}
-section h1 { font-size: 2em; }
-section h2 { font-size: 1.8em; }
-section p {
-  margin-bottom: 15px;
-  font-weight: 400;
-}
-.services-list {
+/* (If using explicit classes for visibility, e.g., .is-visible on .section-content, 
+   those would be toggled to trigger the transition:contentReference[oaicite:10]{index=10}) */
+
+/* Services list style (custom bullet) */
+#services ul {
   list-style: none;
+  padding: 1rem;
 }
-.services-list li {
-  margin-bottom: 10px;
+#services li::before {
+  content: "✦";        /* Custom diamond bullet for each service */
+  color: #4CC9F0;
+  margin-right: 0.5rem;
 }
 
-a {
-  color: #9146FF;
-  text-decoration: none;
+/* Portfolio thumbnails hover effect */
+.portfolio-images {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
-a:hover {
-  color: #B277FF;
-}
-a.button {
-  color: #9146FF;
-  border: 2px solid #9146FF;
+.portfolio-images img {
+  width: 200px;
+  border: 2px solid #333;
   border-radius: 4px;
-  padding: 8px 16px;
-  display: inline-block;
-  font-weight: 700;
-  transition: background 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
-a.button:hover {
-  background: #9146FF;
-  color: #121212;
+.portfolio-images img:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 8px #9146FF, 0 0 16px #9146FF;
+  border-color: #4CC9F0;
 }
 
+/* Contact section link style (email link) */
 #contact a {
-  color: #EEEEEE;
-  text-decoration: underline;
+  color: #4CC9F0;
+  text-decoration: none;
 }
 #contact a:hover {
-  color: #9146FF;
+  text-decoration: underline;
 }
 
-footer {
-  text-align: center;
-  padding: 20px;
-  color: #888888;
-  font-size: 0.9em;
-}
-
-@media (max-width: 600px) {
-  nav {
+/* Responsive Design: stack content vertically on smaller screens */
+@media (max-width: 768px) {
+  .section-content {
     flex-direction: column;
-    align-items: center;
-  }
-  nav ul {
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  nav ul li a {
-    padding: 10px;
-  }
-  section {
-    padding: 40px 20px;
-  }
-  section h1, section h2 {
     text-align: center;
+  }
+  .section-content .text-content, .section-content .image-content {
+    width: 100%;
+  }
+  .image-content img {
+    max-height: 50vh;
+  }
+  .navbar {
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    background: #111;  /* Solid background for nav on mobile for readability */
   }
 }
